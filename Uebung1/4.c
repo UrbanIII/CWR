@@ -17,7 +17,6 @@ double sine(double x){
 		delta = fabs(sin-oldsin);
 		oldsin = sin;
 		k++;
-printf("%d\t%d\n",k,fak(2*k));
 	}
 	return sin;
 }
@@ -26,7 +25,7 @@ int main(){
 
 	FILE *f = fopen("output.txt","w");
 	int steps = 100;
-	double low = 40, up = 43;
+	double low = 0, up = 2;
 	double x;
 	for(int i = 0; i<steps; i++){
 		x = low + i*(up-low)/steps;
