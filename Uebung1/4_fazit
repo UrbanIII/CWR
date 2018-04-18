@@ -1,0 +1,2 @@
+bei sehr großen Zahlen, also x aus [40,43] müssen sehr viele Glieder der Reihe berechnet werden.
+--> Fakultäten werden riesig und laufen über -> Ergebnis nan
