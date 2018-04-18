@@ -1,0 +1,8 @@
+all:    
+	gcc helloworld.c -o HELLO -Wall -std=c11
+
+%.o: %.c
+	gcc -c $<
+
+link: helloworld.o
+	gcc -o HELLO helloworld.o

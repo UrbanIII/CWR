@@ -1,0 +1,2 @@
+1. Double präziser als Float
+2. Wenn man zwei Zahlen in stark unterschiedlichen Größenordnungen addiert, macht man sehr große Fehler. (1000 + 1 = 1000, wenn man auf 2 Nachkommastellen genau rundet) --> aufsteigend summieren ist genauer!
