@@ -3,4 +3,3 @@ all:
 	./a.out
 	gnuplot plot.gp -p
 	rm velocities.txt positions.txt a.out
-	

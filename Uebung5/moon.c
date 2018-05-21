@@ -2,8 +2,8 @@
 #include<math.h>
 #define OMEGA 2*M_PI/(27.322*24)
 #define RE  cbrt(20/(pow(OMEGA,2)*81.3*pow(1+81.3,2)))
-#define RM 81.3*RE 
-#define V0 sqrt(20/1.06) 
+#define RM 81.3*RE
+#define V0 sqrt(20/1.06)
 
 typedef struct Vector {
 	double x;
@@ -96,12 +96,12 @@ int main(){
 
 	//Testing some stuff
 	FILE *output = fopen("output.txt","w");
-	printf("V0: %f\n",V0);
+	//printf("V0: %f\n",V0);
 	for(int t = 0; t<25; t++){
 		fprintf(output,"%f\t%f\t%f\t%f\n", moon(t).x,moon(t).y,earth(t).x,earth(t).y);
 	}
 	vec foo = simulate(0,0,1.0/200);
-		
-	
+
+
 
 }
