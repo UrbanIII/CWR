@@ -3,9 +3,8 @@
 #define OMEGA 2*M_PI/(27.322*24)
 #define RE  cbrt(20/(pow(OMEGA,2)*81.3*pow(1+81.3,2)))
 #define RM 81.3*RE
-#define V0 sqrt(20/1.06)
 #define TIME 500
-#define BOOST 2.0 //experimtenting with TIME 500 yields 1.75 as very small boost that can transport the satellite to the moon's altitude.
+#define BOOST 1.76 //experimtenting with TIME 500 yields 1.75 as very small boost that can transport the satellite to the moon's altitude.
 #define STEP 1.0/200
 
 typedef struct Vector {
@@ -103,27 +102,12 @@ int simulate(double a, int print){ // output is -1 if angle a was too small and 
 	return out;
 }
 
-double bisect(double start, double end){
-	double x = 0.5*(start+end);
-	if(simulate(x ,0) == 0){
-	//	useless = simulate(x ,1);
-		return simulate(x ,1)+x; // This weird thing (instead of just return x) is to avoid an unsed variable warning
-	}
-	if(simulate(x,0) == simulate(start, 0)){
-		return bisect(x,end);
-	}
-	return bisect(start,x);
-}
 
 int main(){
 
-	double angle = 0.5*M_PI;
-	double last_sign = simulate(angle,0);
-	while(simulate(angle,0) == last_sign){
-		last_sign = simulate(angle,0);
-		angle += 0.1;
-	}
-	angle = bisect(angle-0.1,angle);
+	// Doesn't work. Almost no new code was created, only junk from moon.c deleted.
+
+	vec lagrange = {-RE*cos(OMEGA*t)+cos()*(RM+RE), };
 	
 
 }
