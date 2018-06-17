@@ -23,6 +23,10 @@
 
 // This program is pretty much the same as for the potential (potential = concentration)
 
+// Man sollte noch die Randbedingungen anpassen. Dazu zwei Möglichkeiten:
+	// 1. Man simuliert die Randpunkte nicht mit und setzt die dann am Ende der Simulation auf die Werte der jeweils benachbarten Nichtrandpunkte.
+	// 2. (vermutlich besser) Man benutzt für die Randpunkte eine angepasste Form des Laplace-Operators und simuliert sie die ganze Zeit mit.
+
 int circlecheck(int x, int y){
 	if(pow(x*HX-XA,2)+pow(y*HY-YA,2)-R1*R1 < 0 || pow(x*HX-XB,2)+pow(y*HY-YB,2)-R2*R2 < 0){
 		return 1;
@@ -47,7 +51,7 @@ int main(){
 			}
 		}
 	}
-	
+
 	double res = EPS+1;
 	int count = 0;
 	while(res>EPS && count <100000){
@@ -71,7 +75,7 @@ int main(){
 		}
 		//printf("RESIDUAL:\t%f\n",res);
 	}
-	
+
 	printf("%d iterations\n", count);
 	FILE *out = fopen("out","w");
 	for(int x = 0; x<NX; x++){
@@ -79,5 +83,5 @@ int main(){
 			fprintf(out,"%f\t%f\t%f\n",x*HX,y*HY,pot[x][y]);
 		}
 	}
-	
+
 }
