@@ -13,7 +13,7 @@ unsigned int * Linear_congruential_generator(unsigned long a, unsigned long b, u
 	return array;
 }
 
-unsigned int * R250(unsigned int *seed, int n){
+unsigned int * R250(unsigned int *seed, int n){ // This random number generator is periodic. It is technically enough to have an array of constant length 250 and to always output only one generated number at a time (and of course also writing this number into the array).
 	unsigned int *array = malloc(sizeof(int)*(n+250));
 	for(int i = 0; i<250; i++){
 		array[i] = seed[i];
@@ -25,9 +25,9 @@ unsigned int * R250(unsigned int *seed, int n){
 }
 
 int main(){
-	
+
 	unsigned long a = 22695477, b = 1, m = pow(2,32), seed = time(NULL); // For systems where ints have 4 bytes
-	
+
 	// Testing Linear_congruential_generator
 	FILE *file = fopen("lin_test_hist","w");
 	int n = 1000000;
@@ -49,9 +49,9 @@ int main(){
 			fprintf(file,"%lf\t%lf\t%lf\n",(double)lin_test[i]/m,(double)lin_test[i+1]/m,(double)lin_test[i+2]/m);
 		}
 	}
-	fclose(file);  
+	fclose(file);
 	free(lin_test);
-	
+
 	//Combine the two generators
 	unsigned int *start = Linear_congruential_generator(a,b,m,seed,250);
 	unsigned int *r_test = R250(start, n);
@@ -72,9 +72,8 @@ int main(){
 		if(i+2<n){
 			fprintf(file,"%lf\t%lf\t%lf\n",(double)r_test[i]/m,(double)r_test[i+1]/m,(double)r_test[i+2]/m);
 		}
-	}  
+	}
 	free(r_test);
 	fclose(file);
-	
-}
 
+}
